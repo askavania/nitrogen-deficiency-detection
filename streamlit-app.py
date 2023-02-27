@@ -4,7 +4,7 @@ import torch
 import torchvision.transforms as transforms
 
 # Load the saved PyTorch model
-model = torch.hub.load('.', 'NO2_model.pkl', source='local', force_reload=True)
+model = torch.hub.load('askavania/nitrogen-deficiency-detection', 'NO2_model.pkl', force_reload=True)
 
 # Define the transformations for the input image
 transform = transforms.Compose([
