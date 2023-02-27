@@ -41,7 +41,7 @@ knnimpute==0.1.0
 langcodes==3.3.0
 libclang==14.0.6
 llvmlite==0.39.1
-libgl1-mesa-glx
+
 
 
 Markdown==3.4.1
