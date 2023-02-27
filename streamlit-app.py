@@ -29,14 +29,15 @@ def app():
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         image_tensor = transform(image).unsqueeze(0)
-
+        
+        model.eval()
         with torch.no_grad():
             outputs = model(image_tensor)
-            _, predicted = torch.max(outputs.data, 1)
-            predicted_class = class_names[predicted]
+            class_index = torch.argmax(output, dim=1).item()
+            class_name = class_names[class_index]
 
         st.image(image, caption='Uploaded Image', use_column_width=True)
-        st.write("The predicted class is", predicted_class)
+        st.write("The predicted class is", class_name)
 
 # Run the Streamlit app
 if __name__ == '__main__':
