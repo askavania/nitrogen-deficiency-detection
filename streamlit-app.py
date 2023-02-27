@@ -8,7 +8,7 @@ import torchvision.transforms as transforms
 # Load the saved PyTorch model
 # model_str = open('NO2_model.pkl', 'rb').read()
 # model = nn.Sequential(*pickle.loads(model_str))
-model = torch.hub.load('EfficientNet_B4NO2Model.pth',source=local, force_reload=True)
+model = torch.hub.load('askavania/nitrogen-deficiency-detection', 'EfficientNet_B4NO2Model.pth', force_reload=True)
 
 # Define the transformations for the input image
 transform = transforms.Compose([
