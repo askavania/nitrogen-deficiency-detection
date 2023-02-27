@@ -1,11 +1,13 @@
 import streamlit as st
 from PIL import Image
 import torch
+import torch.nn as nn
 import pickle
 import torchvision.transforms as transforms
 
 # Load the saved PyTorch model
-model = pickle.load(open('NO2_model.pkl', 'rb'))
+model_str = open('NO2_model.pkl', 'rb').read()
+model = nn.Sequential(*pickle.loads(model_str))
 
 # Define the transformations for the input image
 transform = transforms.Compose([
