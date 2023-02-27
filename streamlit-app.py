@@ -4,26 +4,30 @@ import torch
 import torch.nn as nn
 import pickle
 import torchvision.transforms as transforms
+from torchvision import models
+import numpy as np
+import cv2
 
-# Load the saved PyTorch model
-# model_str = open('NO2_model.pkl', 'rb').read()
-# model = nn.Sequential(*pickle.loads(model_str))
-model = pickle.load(open('EfficientNet_B4NO2Model.pth', 'rb'))
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+PATH = "EfficientNet_B4NO2Model.pt"
+my_model = torch.load(PATH).to(device)
+my_model.eval()
 
 # Define a function to make predictions with the trained model
-def predict(model, image_path):
+def predict(model, opencv_Image):
     # Load the image and transform it to the appropriate format
     transform = transforms.Compose([
         transforms.Resize((100, 100)),
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
-    image = Image.open(image_path)
-    image = transform(image).unsqueeze(0)
-    image = image.to(device)
+    #image = Image.open(image_path)
+    pil_image = Image.fromarray(opencv_Image)
+    image = transform(pil_image).unsqueeze(0).to(device)
+    image = image
 
     # Make a prediction with the trained model
-    model.eval()
+    #model.eval()
     with torch.no_grad():
         output = model(image)
         class_index = torch.argmax(output, dim=1).item()
@@ -34,48 +38,30 @@ def predict(model, image_path):
 
     return class_name
 
-# # Example usage: predict the class of a new image
-# image_path = "/kaggle/input/rice-leaf-test/googleimage1.jpg"
-# class_name = predict(net, image_path)
-# image_show = Image.open(image_path)
-# plt.imshow(image_show)
-# plt.title('The predicted class is :' + class_name)
-# plt.axis('off')
-# plt.show()
+tab1, tab2 = st.tabs(["Upload Image", "Capture Image"])
 
-# # Define the transformations for the input image
-# transform = transforms.Compose([
-#     transforms.Resize((100, 100)),
-#     transforms.ToTensor(),
-#     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-# ])
+with tab1:
+    test_image = st.file_uploader('Image', type=['jpg', 'png','jpeg', 'jfif'] )
+    col1, col2 = st.columns(2)
+    if test_image is not None:
+        # Convert the file read to the bytes array.
+        file_bytes = np.asarray(bytearray(test_image.read()), dtype=np.uint8)
+        # Converting the byte array into opencv image. 0 for grayscale and 1 for bgr
+        test_image_decoded = cv2.imdecode(file_bytes,1) 
+        col1.subheader('Uploaded Test Image')
+        col1.image(test_image_decoded, channels = "BGR")
+        prediction = predict(my_model, test_image_decoded)
+        col2.subheader('Predicted Class')
+        col2.write(prediction)
 
-# # Define the list of class names
-# class_names = ['class1', 'class2', 'class3', 'class4']
-
-# Define the Streamlit app
-def app():
-    st.title("Nitrogen Deficiency for Rice Crop Prediction App")
-    st.write("Upload a photo of a rice leaf to see if it has nitrogen deficiency or not!")
-
-    # Allow the user to upload an image
-    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-
-    # If an image is uploaded, make a prediction with the model
-    if uploaded_file is not None:
-        class_name = predict(model, uploaded_file)      
-#         image = Image.open(uploaded_file)
-#         image_tensor = transform(image).unsqueeze(0)
-        
-#         model.eval()
-#         with torch.no_grad():
-#             outputs = model(image_tensor)
-#             class_index = torch.argmax(output, dim=1).item()
-#             class_name = class_names[class_index]
-
-        st.image(image, caption='Uploaded Image', use_column_width=True)
-        st.write("The predicted class is", class_name)
-
-# Run the Streamlit app
-if __name__ == '__main__':
-    app()
+with tab2:
+    img_camera = st.camera_input("Capture Image")
+    
+    if img_camera is not None:
+        # Convert the file read to the bytes array.
+        file_bytes = np.asarray(bytearray(img_camera.read()), dtype=np.uint8)
+        # Converting the byte array into opencv image. 0 for grayscale and 1 for bgr
+        test_image_decoded = cv2.imdecode(file_bytes,1) 
+        prediction = predict(my_model, test_image_decoded)
+        st.subheader('Predicted Class')
+        st.write(prediction)
