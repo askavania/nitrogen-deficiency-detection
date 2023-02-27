@@ -6,8 +6,9 @@ import pickle
 import torchvision.transforms as transforms
 
 # Load the saved PyTorch model
-model_str = open('NO2_model.pkl', 'rb').read()
-model = nn.Sequential(*pickle.loads(model_str))
+# model_str = open('NO2_model.pkl', 'rb').read()
+# model = nn.Sequential(*pickle.loads(model_str))
+model = torch.load('EfficientNet_B4NO2Model.pth')
 
 # Define the transformations for the input image
 transform = transforms.Compose([
