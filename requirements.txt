@@ -91,7 +91,7 @@ pytest==7.2.0
 
 pytz-deprecation-shim==0.1.0.post0
 pyvis==0.3.1
-pywin32==304
+
 
 qdldl==0.1.5.post2
 querystring-parser==1.2.4
