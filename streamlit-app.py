@@ -4,7 +4,7 @@ import torch
 import torchvision.transforms as transforms
 
 # Load the saved PyTorch model
-model = torch.load('NO2_model.pkl')
+model = torch.hub.load('NO2_model.pkl')
 
 # Define the transformations for the input image
 transform = transforms.Compose([
