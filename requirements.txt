@@ -62,7 +62,7 @@ numba==0.56.4
 
 oauthlib==3.2.2
 onnx==1.13.1
-opencv-python==4.7.0.72
+opencv-python
 opt-einsum==3.3.0
 osqp==0.6.2.post8
 outcome==1.2.0
@@ -156,8 +156,4 @@ webencodings==0.5.1
 
 wsproto==1.2.0
 
-libgl1-mesa-dev
-libglu1-mesa-dev
-libgles2-mesa-dev
-libegl1-mesa-dev
 
