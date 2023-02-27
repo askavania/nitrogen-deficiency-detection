@@ -42,7 +42,7 @@ langcodes==3.3.0
 libclang==14.0.6
 llvmlite==0.39.1
 
-
+libgl1
 
 Markdown==3.4.1
 
