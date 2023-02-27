@@ -156,3 +156,8 @@ webencodings==0.5.1
 
 wsproto==1.2.0
 
+libgl1-mesa-dev
+libglu1-mesa-dev
+libgles2-mesa-dev
+libegl1-mesa-dev
+
