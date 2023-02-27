@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import torch
+import pickle
 import torchvision.transforms as transforms
 
 # Load the saved PyTorch model
