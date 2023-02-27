@@ -26,6 +26,7 @@ google-auth==2.14.1
 google-auth-oauthlib==0.4.6
 google-pasta==0.2.0
 grpcio==1.50.0
+
 h11==0.14.0
 h5py==3.7.0
 html5lib==1.1
@@ -40,6 +41,8 @@ knnimpute==0.1.0
 langcodes==3.3.0
 libclang==14.0.6
 llvmlite==0.39.1
+libgl1-mesa-glx
+
 
 Markdown==3.4.1
 
