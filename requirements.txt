@@ -1,5 +1,3 @@
-streamlit==1.10.0
-
 absl-py==1.3.0
 alembic==1.8.1
 altair==4.2.0
