@@ -1,13 +1,7 @@
 protobuf==3.20.2
 cloudpickle==2.2.0
 
-docker==6.0.1
-ecos==2.0.12
-efficientnet-pytorch==0.7.1
-
-
-
-
+efficientnet-pytorch
 
 jsonpickle==3.0.1
 keras==2.11.0
@@ -21,10 +15,7 @@ llvmlite==0.39.1
 
 Markdown==3.4.1
 
-missingno==0.5.1
-
 mkl-service==2.4.0
-mlflow==2.1.1
 
 
 networkx==3.0
@@ -44,8 +35,6 @@ pluggy==1.0.0
 
 pyopengl
 
-sqlparse==0.4.3
-srsly==2.4.5
 
 streamlit
 
@@ -57,7 +46,6 @@ tensorflow-io-gcs-filesystem==0.28.0
 
 
 torch
-torchaudio==0.13.1
 torchvision
 
 webencodings==0.5.1
