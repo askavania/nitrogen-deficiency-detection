@@ -42,14 +42,7 @@ opencv-python-headless
 pluggy==1.0.0
 
 
-
-
-
 pyopengl
-pickle
-
-
-
 
 sqlparse==0.4.3
 srsly==2.4.5
