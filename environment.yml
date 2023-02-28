@@ -15,6 +15,7 @@ dependencies:
   - pip
   - psycopg2
   - opencv-python
+  - pyopengl
   - pymc3
   - python=3.8
   - requests
