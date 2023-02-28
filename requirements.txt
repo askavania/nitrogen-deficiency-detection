@@ -54,7 +54,7 @@ pickle
 sqlparse==0.4.3
 srsly==2.4.5
 
-streamlit==1.15.1
+streamlit
 
 tensorboard==2.11.0
 tensorboard-data-server==0.6.1
