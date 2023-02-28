@@ -6,23 +6,28 @@ import pickle
 import torchvision.transforms as transforms
 from torchvision import models
 import numpy as np
+import cv2
 
-#device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 PATH = "EfficientNet_B4NO2Model.pt"
-my_model = torch.load(PATH)#.to(device)
+my_model = torch.load(PATH).to(device)
 my_model.eval()
 
 # Define a function to make predictions with the trained model
-def predict(model, pil_image):
+def predict(model, opencv_Image):
     # Load the image and transform it to the appropriate format
     transform = transforms.Compose([
         transforms.Resize((100, 100)),
         transforms.ToTensor(),
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
-    image = transform(pil_image).unsqueeze(0)#.to(device)
+    #image = Image.open(image_path)
+    pil_image = Image.fromarray(opencv_Image)
+    image = transform(pil_image).unsqueeze(0).to(device)
+    image = image
 
     # Make a prediction with the trained model
+    #model.eval()
     with torch.no_grad():
         output = model(image)
         class_index = torch.argmax(output, dim=1).item()
@@ -39,11 +44,13 @@ with tab1:
     test_image = st.file_uploader('Image', type=['jpg', 'png','jpeg', 'jfif'] )
     col1, col2 = st.columns(2)
     if test_image is not None:
-        # Convert the file read to a PIL Image
-        pil_image = Image.open(test_image)
+        # Convert the file read to the bytes array.
+        file_bytes = np.asarray(bytearray(test_image.read()), dtype=np.uint8)
+        # Converting the byte array into opencv image. 0 for grayscale and 1 for bgr
+        test_image_decoded = cv2.imdecode(file_bytes,1) 
         col1.subheader('Uploaded Test Image')
-        col1.image(pil_image, channels='RGB')
-        prediction = predict(my_model, pil_image)
+        col1.image(test_image_decoded, channels = "BGR")
+        prediction = predict(my_model, test_image_decoded)
         col2.subheader('Predicted Class')
         col2.write(prediction)
 
@@ -51,8 +58,10 @@ with tab2:
     img_camera = st.camera_input("Capture Image")
     
     if img_camera is not None:
-        # Convert the file read to a PIL Image
-        pil_image = Image.fromarray(img_camera)
-        prediction = predict(my_model, pil_image)
+        # Convert the file read to the bytes array.
+        file_bytes = np.asarray(bytearray(img_camera.read()), dtype=np.uint8)
+        # Converting the byte array into opencv image. 0 for grayscale and 1 for bgr
+        test_image_decoded = cv2.imdecode(file_bytes,1) 
+        prediction = predict(my_model, test_image_decoded)
         st.subheader('Predicted Class')
         st.write(prediction)
