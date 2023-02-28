@@ -140,7 +140,7 @@ thinc==8.1.7
 toml==0.10.2
 
 toolz==0.12.0
-torch
+torch==1.6.0
 torchaudio==0.13.1
 torchvision==0.7.0
 
