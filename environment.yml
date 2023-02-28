@@ -14,7 +14,7 @@ dependencies:
   - notebook
   - pip
   - psycopg2
-  - opencv-python
+  - opencv
   - pyopengl
   - pymc3
   - python=3.8
