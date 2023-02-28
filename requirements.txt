@@ -60,4 +60,4 @@ torch
 torchaudio==0.13.1
 torchvision
 
-
+webencodings==0.5.1
