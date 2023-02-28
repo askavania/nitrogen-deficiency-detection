@@ -65,6 +65,6 @@ tensorflow-io-gcs-filesystem==0.28.0
 
 torch
 torchaudio==0.13.1
-torchvision==0.7.0
+torchvision
 
 
