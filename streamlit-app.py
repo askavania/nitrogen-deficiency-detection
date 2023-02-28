@@ -8,10 +8,12 @@ from torchvision import models
 import numpy as np
 import cv2
 
+
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 PATH = "EfficientNet_B4NO2Model.pt"
-my_model = torch.load(PATH).to(device)
+my_model = torch.load(PATH, map_location=torch.device(device))
 my_model.eval()
+
 
 # Define a function to make predictions with the trained model
 def predict(model, opencv_Image):
@@ -37,6 +39,7 @@ def predict(model, opencv_Image):
     class_name = class_names[class_index]
 
     return class_name
+
 
 tab1, tab2 = st.tabs(["Upload Image", "Capture Image"])
 
