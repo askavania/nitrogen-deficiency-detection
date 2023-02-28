@@ -63,6 +63,8 @@ numba==0.56.4
 oauthlib==3.2.2
 onnx==1.13.1
 opencv-python
+opencv-python-headless
+
 opt-einsum==3.3.0
 osqp==0.6.2.post8
 outcome==1.2.0
