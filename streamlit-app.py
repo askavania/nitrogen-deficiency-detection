@@ -9,7 +9,7 @@ import cv2
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 PATH = "EfficientNet_B4NO2Model.pt"
-my_model = torch.load(PATH, map_location=torch.device('cpu'))
+my_model = torch.load(PATH, map_location='cpu')
 my_model.eval()
 
 # Define a function to make predictions with the trained model
