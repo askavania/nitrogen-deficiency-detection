@@ -32,7 +32,10 @@ def predict(model, opencv_Image):
         class_index = torch.argmax(output, dim=1).item()
 
     # Map the predicted index to the class name
-    class_names = ['class1', 'class2', 'class3', 'class4']
+    class_names = ['No2 Deficiency observed - Apply N-Fertilizer immediately', 
+                   'N02 Deficiency observed - Apply N-Fertilizer soon', 
+                   'Ideal range - Do not apply N-Fertilizer and continue to monitor closely', 
+                   'Ideal range - Do not apply N-Fertilizer and continue to monitor']
     class_name = class_names[class_index]
 
     return class_name
