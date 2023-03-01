@@ -26,5 +26,6 @@ The model and streamlit app developed in this project has the potential to assis
 
 The link to the app is below;<br>
 https://rice-crop-plant-nitrogen-deficiency-detection.streamlit.app/
+<br>
 About the Leaf Color Chart: https://pdf.usaid.gov/pdf_docs/PA00K938.pdf
 
