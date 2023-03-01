@@ -34,11 +34,14 @@ def predict(model, opencv_Image):
     # Map the predicted index to the class name
     class_names = ['No2 Deficiency observed - Class 1:  \n Apply N-Fertilizer immediately', 
                    'N02 Deficiency observed - \n Apply N-Fertilizer soon', 
-                   'Ideal range - Do not apply N-Fertilizer and continue to monitor closely', 
-                   'Ideal range - Do not apply N-Fertilizer and continue to monitor']
+                   'Ideal range - Class 3: \n Do not apply N-Fertilizer and continue to monitor closely', 
+                   'Ideal range - Class 4: \n Do not apply N-Fertilizer and continue to monitor']
     class_name = class_names[class_index]
 
     return class_name
+
+st.title("Nitrogen Deficiency for Rice Crop Prediction App")
+st.write("Upload a photo of a rice leaf to see if it has nitrogen deficiency or not!")
 
 tab1, tab2 = st.tabs(["Upload Image", "Capture Image"])
 
