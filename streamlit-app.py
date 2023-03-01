@@ -56,7 +56,7 @@ st.markdown("""
 st.title("Nitrogen Deficiency for Rice Crop Prediction App")
 st.write("Upload or take a photo of a rice leaf to see if it has nitrogen deficiency or not!")
 
-tab1, tab2 = st.tabs(["Upload Image", "Capture Image"])
+tab1, tab2, tab3 = st.tabs(["Upload Image", "Capture Image", "Use Case Test Images"])
 
 with tab1:
     test_image = st.file_uploader('Image', type=['jpg', 'png','jpeg', 'jfif'] )
@@ -84,6 +84,7 @@ with tab2:
         st.subheader('Predicted Class')
         st.write(prediction)
 
+
         # Define a dictionary of preset images and their corresponding labels
 preset_images = {
     'Class 1 sample 1': 'https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage1-class1.jpg',
@@ -97,7 +98,7 @@ preset_images = {
 }
 
 # Define a new tab for the preset images
-with st.sidebar:
+with tab3:
     st.title('Preset Images')
     for label, image_url in preset_images.items():
         col1, col2 = st.columns(2)
