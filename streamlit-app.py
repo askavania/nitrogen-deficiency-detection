@@ -41,7 +41,7 @@ def predict(model, opencv_Image):
     return class_name
 
 st.title("Nitrogen Deficiency for Rice Crop Prediction App")
-st.write("Upload a photo of a rice leaf to see if it has nitrogen deficiency or not!")
+st.write("Upload or take a photo of a rice leaf to see if it has nitrogen deficiency or not!")
 
 tab1, tab2 = st.tabs(["Upload Image", "Capture Image"])
 
@@ -53,7 +53,7 @@ with tab1:
         file_bytes = np.asarray(bytearray(test_image.read()), dtype=np.uint8)
         # Converting the byte array into opencv image. 0 for grayscale and 1 for bgr
         test_image_decoded = cv2.imdecode(file_bytes,1) 
-        col1.subheader('Uploaded Test Image')
+        col1.subheader('Uploaded Image')
         col1.image(test_image_decoded, channels = "BGR")
         prediction = predict(my_model, test_image_decoded)
         col2.subheader('Predicted Class')
