@@ -128,7 +128,7 @@ with tab3:
     selected_image = st.selectbox('Select an image:', options=image_paths)
     col1, col2 = st.columns(2)
     if st.button('Predict'):
-        image = cv2.imread(selected_image)
+        image = cv2.imread(st.image(selected_image))
         prediction = predict(my_model, image)
         st.write('Prediction:', prediction)
         col1.subheader('Uploaded Image')
