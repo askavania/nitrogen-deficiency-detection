@@ -40,6 +40,10 @@ def predict(model, opencv_Image):
 
     return class_name
 
+# Set the background color of the Streamlit app to black
+st.set_page_config(page_icon=':rocket:', layout='wide', theme='dark')
+
+# Defining the rest of Streamlit app code
 st.title("Nitrogen Deficiency for Rice Crop Prediction App")
 st.write("Upload or take a photo of a rice leaf to see if it has nitrogen deficiency or not!")
 
