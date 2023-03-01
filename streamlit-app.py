@@ -125,7 +125,7 @@ def predict_preset_images(model, image_paths):
 # Create a new tab for preset images
 with tab3:
     st.markdown('## Preset Images')
-    st.image('https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage1-class1.jpg')
+    st.image(https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage1-class1.jpg)
     selected_image = st.selectbox('Select an image:', options=image_paths)
     col1, col2 = st.columns(2)
 #     if st.button('Predict'):
