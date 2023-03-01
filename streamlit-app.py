@@ -83,3 +83,26 @@ with tab2:
         prediction = predict(my_model, test_image_decoded)
         st.subheader('Predicted Class')
         st.write(prediction)
+
+        # Define a dictionary of preset images and their corresponding labels
+preset_images = {
+    'Class 1 sample 1': 'https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage1-class1.jpg',
+    'Class 1 sample 2': 'https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage2.jpg',
+    'Class 1 sample 3': 'https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage4.jpg',
+    'Class 1 sample 4': 'https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage6.jpg',
+    'Class 1 sample 3': 'https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage4.jpg',
+    'Class 3 sample 1': 'https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage7.jpg',
+    'Class 3 sample 2': 'https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage8.jpg',
+    'Class 4 sample 1': 'https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/unknown4.jpg',
+}
+
+# Define a new tab for the preset images
+with st.sidebar:
+    st.title('Preset Images')
+    for label, image_url in preset_images.items():
+        col1, col2 = st.columns(2)
+        with col1:
+            st.subheader(label.title())
+            st.image(image_url, use_column_width=True)
+        with col2:
+            st.write('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod ut nulla ac efficitur. Aenean rhoncus dolor quis erat congue bibendum.')
