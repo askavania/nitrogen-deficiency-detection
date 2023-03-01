@@ -3,7 +3,7 @@
 # Nitrogen Deficiency Detection for Rice Crops
 ---
 
-# Executive Summary: Rice Leaf Disease Classification Model
+# Executive Summary: Rice Leaf Nitrogen Deficiency Multi-Classification
 
 ## Overview:
 The objective of this project is to build an image classifier that can accurately detect nitrogen deficiency in rice crops from images, to assist farmers in identifying and treating the disease in a timely and efficient manner. The model was built using PyTorch, an open-source machine learning framework, and was trained on a dataset of over 4,000 images of healthy and diseased rice leaves. The model achieved an F1-score of 0.973 for the training set and 0.955 for the holdout set, indicating its high accuracy in classifying rice leaf diseases.
