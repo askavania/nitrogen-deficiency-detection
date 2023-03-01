@@ -44,7 +44,7 @@ def predict(model, opencv_Image):
 st.markdown("""
     <style>
     body {
-        background-color: #000000;
+        background-color: #000054;
     }
     </style>
 """, unsafe_allow_html=True)
