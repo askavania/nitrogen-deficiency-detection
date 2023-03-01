@@ -24,5 +24,5 @@ To make predictions with the model, a predictor function was defined, which take
 ## Conclusion:
 The model and streamlit app developed in this project has the potential to assist farmers in identifying and treating rice leaf nitrogen deficiency in a timely and efficient manner, without the judgement error that humans may make. Its high accuracy, as demonstrated by an F1-score of 95.5% on the holdout set, makes it a valuable tool in the agricultural industry. Future work could involve a model for object detection to recognise the plants in the entire field, expanding the dataset to include more diverse types of rice leaf diseases, refining the model architecture, or exploring transfer learning techniques to improve the model's performance. 
 
-The link to the app is below;
+The link to the app is below;<br>
 https://rice-crop-plant-nitrogen-deficiency-detection.streamlit.app/
