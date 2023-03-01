@@ -125,17 +125,18 @@ def predict_preset_images(model, image_paths):
 # Create a new tab for preset images
 with tab3:
     st.markdown('## Preset Images')
+    st.image('https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage1-class1.jpg')
     selected_image = st.selectbox('Select an image:', options=image_paths)
     col1, col2 = st.columns(2)
-    if st.button('Predict'):
-        image = cv2.imread(st.image(selected_image))
-        prediction = predict(my_model, image)
-        st.write('Prediction:', prediction)
-        col1.subheader('Uploaded Image')
-        col1.image(image, channels = "BGR")
-        prediction = predict(my_model, image)
-        col2.subheader('Predicted Class')
-        col2.write(prediction)
+#     if st.button('Predict'):
+#         image = cv2.imread(st.image(selected_image))
+#         prediction = predict(my_model, image)
+#         st.write('Prediction:', prediction)
+#         col1.subheader('Uploaded Image')
+#         col1.image(image, channels = "BGR")
+#         prediction = predict(my_model, image)
+#         col2.subheader('Predicted Class')
+#         col2.write(prediction)
 
 # Create another tab for multiple preset images
 #with st.sidebar:
