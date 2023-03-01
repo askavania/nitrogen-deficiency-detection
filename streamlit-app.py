@@ -98,12 +98,45 @@ preset_images = {
 }
 
 # Define a new tab for the preset images
+# with tab3:
+#     st.title('Preset Images')
+#     for label, image_url in preset_images.items():
+#         col1, col2 = st.columns(2)
+#         with col1:
+#             st.subheader(label.title())
+#             st.image(image_url, use_column_width=True)
+#         with col2:
+#             st.write('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod ut nulla ac efficitur. Aenean rhoncus dolor quis erat congue bibendum.')
+
+            
+# Define the images and their corresponding labels
+image_paths = preset_images.items()
+labels = preset_images.keys()
+
+# Define a function to make predictions for preset images
+def predict_preset_images(model, image_paths):
+    predictions = []
+    for path in image_paths:
+        image = cv2.imread(path)
+        prediction = predict(model, image)
+        predictions.append(prediction)
+    return predictions
+
+# Create a new tab for preset images
 with tab3:
-    st.title('Preset Images')
-    for label, image_url in preset_images.items():
-        col1, col2 = st.columns(2)
-        with col1:
-            st.subheader(label.title())
-            st.image(image_url, use_column_width=True)
-        with col2:
-            st.write('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod ut nulla ac efficitur. Aenean rhoncus dolor quis erat congue bibendum.')
+    st.markdown('## Preset Images')
+    selected_image = st.selectbox('Select an image:', options=image_paths)
+    if st.button('Predict'):
+        image = cv2.imread(selected_image)
+        prediction = predict(my_model, image)
+        st.write('Prediction:', prediction)
+
+# Create another tab for multiple preset images
+#with st.sidebar:
+#     st.markdown('## Multiple Preset Images')
+#     st.write('This tab will predict the labels of multiple preset images.')
+#     if st.button('Predict All'):
+#         predictions = predict_preset_images(my_model, image_paths)
+#         st.write('Predictions:')
+#         for i, label in enumerate(labels):
+#             st.write(f'{label}: {predictions[i]}')
