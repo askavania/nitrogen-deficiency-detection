@@ -126,10 +126,16 @@ def predict_preset_images(model, image_paths):
 with tab3:
     st.markdown('## Preset Images')
     selected_image = st.selectbox('Select an image:', options=image_paths)
+    col1, col2 = st.columns(2)
     if st.button('Predict'):
         image = cv2.imread(selected_image)
         prediction = predict(my_model, image)
         st.write('Prediction:', prediction)
+        col1.subheader('Uploaded Image')
+        col1.image(image, channels = "BGR")
+        prediction = predict(my_model, image)
+        col2.subheader('Predicted Class')
+        col2.write(prediction)
 
 # Create another tab for multiple preset images
 #with st.sidebar:
