@@ -44,14 +44,10 @@ def predict(model, opencv_Image):
 st.markdown("""
     <style>
     body {
-        background-color: #000054;
+        background-color: #000000;
     }
     </style>
 """, unsafe_allow_html=True)
-
-st.image(https://github.com/askavania/nitrogen-deficiency-detection/blob/main/Data/NitrogenDeficiencyImage/RealWorldTest/googleimage1-class1.jpg)
-
-# Define the rest of your Streamlit app code here
 
 
 # Defining the rest of Streamlit app code
