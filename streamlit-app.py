@@ -8,6 +8,7 @@ import torchvision.models.efficientnet as efficientnet
 from torchvision.ops.misc import Conv2dNormActivation
 import torch.nn.modules.container as container
 from torch.nn.modules.conv import Conv2d
+from torch.nn.modules.batchnorm import BatchNorm2d
 import numpy as np
 import cv2
 
@@ -15,7 +16,8 @@ torch.serialization.add_safe_globals([
     efficientnet.EfficientNet,
     container.Sequential,
     Conv2dNormActivation,
-    Conv2d
+    Conv2d,
+    BatchNorm2d
 ])
 
 # 1) Determine device
