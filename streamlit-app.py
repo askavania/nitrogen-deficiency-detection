@@ -7,6 +7,13 @@ from torchvision import models
 import numpy as np
 import cv2
 
+torch.serialization.add_safe_globals([
+    efficientnet.EfficientNet,
+    container.Sequential,
+    Conv2dNormActivation,
+    Conv2d
+])
+
 # 1) Determine device
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -23,7 +30,7 @@ def load_model(path="EfficientNet_B4NO2Model.pt"):
         nn.Linear(512, 4)
     )
     # load only the state dict
-    sd = torch.load(path, map_location=device, weights_only=False)
+    sd = torch.load(path, map_location=device)
     model.load_state_dict(sd)
     return model.to(device).eval()
 
