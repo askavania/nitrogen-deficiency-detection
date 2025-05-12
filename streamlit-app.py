@@ -12,7 +12,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 PATH = "EfficientNet_B4NO2Model.pt"
 
 # Add to the global safe list once
-torch.serialization.add_safe_globals([efficientnet.EfficientNet])
+torch.serialization.add_safe_globals([torch.nn.modules.container.Sequential])
 
 my_model = torch.load(PATH, map_location=device)  # weights_only=True by default
 my_model.eval()
