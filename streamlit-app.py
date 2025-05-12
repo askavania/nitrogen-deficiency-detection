@@ -10,9 +10,8 @@ import numpy as np
 import cv2
 
 # --- allowlist EfficientNet for safe unpickling under PyTorch ≥2.6 ---
-torch.serialization.add_safe_globals([efficientnet.EfficientNet, container.Sequential])
+torch.serialization.add_safe_globals([efficientnet.EfficientNet, container.Sequential, Conv2dNormActivation])
 
-torch.serialization.add_safe_globals([torchvision.ops.misc.Conv2dNormActivation])
 
 # device setup
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
