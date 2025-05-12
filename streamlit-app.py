@@ -23,7 +23,7 @@ def load_model(path="EfficientNet_B4NO2Model.pt"):
         nn.Linear(512, 4)
     )
     # load only the state dict
-    sd = torch.load(path, map_location=device)
+    sd = torch.load(path, map_location=device, weights_only=False)
     model.load_state_dict(sd)
     return model.to(device).eval()
 
