@@ -12,7 +12,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # 2) Define and cache model loader
 @st.cache_resource
-def load_model(path="EfficientNet_B4NO2Model.pth"):
+def load_model(path="EfficientNet_B4NO2Model.pt"):
     # rebuild architecture
     model = models.efficientnet_b4(pretrained=False)
     model.classifier = nn.Sequential(
