@@ -6,11 +6,12 @@ from torchvision.ops.misc import Conv2dNormActivation
 import torchvision.transforms as transforms
 from torchvision import models
 import torch.nn.modules.container as container
+from torch.nn.modules.conv import Conv2d
 import numpy as np
 import cv2
 
 # --- allowlist EfficientNet for safe unpickling under PyTorch ≥2.6 ---
-torch.serialization.add_safe_globals([efficientnet.EfficientNet, container.Sequential, Conv2dNormActivation])
+torch.serialization.add_safe_globals([efficientnet.EfficientNet, container.Sequential, Conv2dNormActivation, torch.nn.modules.conv.Conv2d])
 
 
 # device setup
