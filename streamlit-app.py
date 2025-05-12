@@ -9,8 +9,19 @@ import cv2
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 PATH = "EfficientNet_B4NO2Model.pt"
-my_model = torch.load(PATH, map_location='cpu')
-my_model.eval()
+
+# Build the  architecture
+model = models.efficientnet_b4(weights=None)  
+#    (if you modified classifier head, re-apply the same changes)
+num_classes = 4
+in_features = model.classifier[1].in_features
+model.classifier[1] = torch.nn.Linear(in_features, num_classes)
+model.to(device)
+
+# 2) Load the state_dict only
+state_dict = torch.load(PATH, map_location=device)
+model.load_state_dict(state_dict)
+model.eval()
 
 # Define a function to make predictions with the trained model
 def predict(model, opencv_Image):
