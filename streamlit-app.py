@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import torch
 import torchvision.models.efficientnet as efficientnet
+from torchvision.ops.misc import Conv2dNormActivation
 import torchvision.transforms as transforms
 from torchvision import models
 import torch.nn.modules.container as container
