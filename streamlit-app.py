@@ -6,9 +6,17 @@ import torchvision.transforms as transforms
 from torchvision import models
 import numpy as np
 import cv2
+import torchvision.models.efficientnet as efficientnet
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 PATH = "EfficientNet_B4NO2Model.pt"
+
+# Add to the global safe list once
+torch.serialization.add_safe_globals([efficientnet.EfficientNet])
+
+my_model = torch.load(PATH, map_location=device)  # weights_only=True by default
+my_model.eval()
+
 my_model = torch.load(PATH, map_location='cpu', weights_only = 'False')
 my_model.eval()
 
