@@ -4,6 +4,7 @@ import torch
 import torchvision.models.efficientnet as efficientnet
 import torchvision.transforms as transforms
 from torchvision import models
+import torch.nn.modules.container as container
 import numpy as np
 import cv2
 
