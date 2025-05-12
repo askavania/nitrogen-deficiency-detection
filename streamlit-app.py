@@ -14,7 +14,7 @@ PATH = "EfficientNet_B4NO2Model.pt"
 # Add to the global safe list once
 torch.serialization.add_safe_globals([torch.nn.modules.container.Sequential])
 
-my_model = torch.load(PATH, map_location=device)  # weights_only=True by default
+my_model = torch.load(PATH, map_location=device, weights_only = False)  # weights_only=True by default
 my_model.eval()
 
 my_model = torch.load(PATH, map_location='cpu', weights_only = 'False')
