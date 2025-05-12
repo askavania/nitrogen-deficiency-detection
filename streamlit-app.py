@@ -4,6 +4,10 @@ import torch
 import torch.nn as nn
 import torchvision.transforms as T
 from torchvision import models
+import torchvision.models.efficientnet as efficientnet
+from torchvision.ops.misc import Conv2dNormActivation
+import torch.nn.modules.container as container
+from torch.nn.modules.conv import Conv2d
 import numpy as np
 import cv2
 
